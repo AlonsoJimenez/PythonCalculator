@@ -3,15 +3,17 @@ import optparse
 from flask import Flask, render_template
 app = Flask(__name__)
 
-@app.rout('/')
+@app.route('/', methods=['GET'])
+
 def launch():
     return app.send_static_file('calculator.html')
 
 
 if __name__ == '__main__':
-    flaskrun(app)
+    app.run(host="localhost",port="789", debug=True)
 
-def flaskrun(app, default_host="0.0.0.0", default_port="80"):
+'''
+def flaskrun(app, default_host="localhost", default_port="789"):
     """
     Takes a flask.Flask instance and runs it. Parses
     command-line flags to configure the app.
@@ -38,4 +40,5 @@ def flaskrun(app, default_host="0.0.0.0", default_port="80"):
         host=options.host,
         port=int(options.port)
     )
+    '''
 
